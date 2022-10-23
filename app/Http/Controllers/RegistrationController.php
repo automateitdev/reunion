@@ -12,7 +12,12 @@ use App\Models\Tshirt;
 use App\Models\DressCategory;
 use App\Models\Participent;
 use App\Models\Confirmation;
-use Illuminate\Support\Facades\DB;
+// use Barryvdh\DomPDF\PDF;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use MPDF;
 use shurjopayv2\ShurjopayLaravelPackage8\Http\Controllers\ShurjopayController;
 
 class RegistrationController extends Controller
@@ -139,27 +144,33 @@ class RegistrationController extends Controller
 
     public function verifyPayment(Request $request)
     {
-        $order_id = $request->order_id;
-        $shurjopay_service = new ShurjopayController();
+        // $order_id = $request->order_id;
+        // $shurjopay_service = new ShurjopayController();
 
-        $data = $shurjopay_service->verify($order_id);
-        $list=json_decode($data,true);
+        // $data = $shurjopay_service->verify($order_id);
+        // $list=json_decode($data,true);
         
         // echo $list[0]['order_id'];
         // echo "<pre>";
         // print_r($list);
         // echo "</pre>";
         
-        $input = new Confirmation();
-        $input->order_id = $list[0]['order_id'];
-        $input->amount = $list[0]['amount'];
-        $input->mobile = $list[0]['customer_order_id'];
-        $input->msg = $list[0]['sp_massage'];
-        $input->name = $list[0]['name'];
-        $input->transaction_status = $list[0]['transaction_status'];
-        $input->save();
+        // $input = new Confirmation();
+        // $input->order_id = $list[0]['order_id'];
+        // $input->amount = $list[0]['amount'];
+        // $input->mobile = $list[0]['customer_order_id'];
+        // $input->msg = $list[0]['sp_massage'];
+        // $input->name = $list[0]['name'];
+        // $input->transaction_status = $list[0]['transaction_status'];
+        // $input->save();
+        $participents = Participent::all();
+        // return view('payment', compact('participents'));
+
+        // $pdf = Pdf::loadView('payment');
+        // return $pdf->download('invoice.pdf');
         
-        return view('payment');
+        $pdf = FacadePdf::loadView('payment', compact('participents'))->setPaper('a4');
+        return $pdf->download('invoice.pdf');
     }
 
     

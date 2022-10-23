@@ -18,7 +18,7 @@ class CreateParticipentsTable extends Migration
             $table->bigInteger('add_id')->nullable();
             $table->bigInteger('batch_id')->nullable();
             $table->bigInteger('cat_id');
-            $table->string('pay');
+            $table->bigInteger('pay');
             $table->string('name');
             $table->string('g_name');
             $table->string('email')->nullable();

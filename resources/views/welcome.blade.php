@@ -24,9 +24,9 @@
   </head>
   <body>
     @include('layouts.nav')
+    @include('layouts.mainmenu')
     <!-- <div class="makeup_slider"></div> -->
     @include('layouts.carousel')
-    @include('layouts.mainmenu')
     @include('layouts.about')
     <!-- @include('layouts.speakers') -->
     @include('layouts.sponsor')

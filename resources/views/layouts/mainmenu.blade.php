@@ -66,5 +66,22 @@
 </div>
 
 <style>
-   
+   #main-menu{
+    background-color: #04913d;
+   }
+   #main-menu .container .row .navbar #navbarNav ul li a{
+    color: #fff;
+    font-size: 21px;
+    padding-right: 30px;
+   }
+   .navbar-expand-lg {
+        z-index: 999;
+    }
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        position: absolute;
+        background-color: #04913d;
+    }
+    .dropdown-item:focus, .dropdown-item:hover {
+        background-color: #2472bf;
+    }
 </style>
