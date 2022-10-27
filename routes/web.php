@@ -34,6 +34,7 @@ Route::get('/register', [RegistrationController::class, 'index'])->name('registe
 Route::post('payment-gateway', [RegistrationController::class, 'store'])->name('register.store');
 Route::get('/registerCategory', [RegistrationController::class, 'registerCategory']);
 Route::get('success-url', [RegistrationController::class, 'verifyPayment']);
+Route::get('payment-fail', [RegistrationController::class, 'verifyPaymentfail']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');

@@ -1,0 +1,135 @@
+
+
+@font-face {
+  font-family: SutonnyOMJ;
+  src: url('/fonts/SutonnyOMJ Regular.ttf');
+  }
+  body{
+    font-family: SutonnyOMJ;
+  }
+
+.invoice_header{
+  display: table;
+  flex-wrap: nowrap;
+  background-color: #53bf5e;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+}
+.invoice_header span{
+    font-size: 25px;
+}
+.invoice_header > div{
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+input{
+  outline: none;
+  border: 1px solid #272b2b;
+  margin-bottom: 15px;
+}
+.content {
+display: flex;
+flex-wrap: nowrap;
+justify-content: space-between;
+padding: 20px;
+}
+.note {
+text-align: center;
+background-color: #36753c;
+color: #fff;
+padding: 12px;
+}
+.left_title{
+  display: table;
+}
+.right_title{
+  display: table;
+}
+.table-cell{
+  display: table-cell;
+}
+table tr td{
+  margin: 2px;
+  vertical-align: middle;
+  text-align: left;
+}
+table {
+width: 100%;
+text-align: left;
+}
+.succ_card{
+padding-top: 20px !important;
+display: flex;
+float: right;
+}
+@media print{
+    * {
+        -webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+        color-adjust: exact !important;                 /* Firefox 48 – 96 */
+        print-color-adjust: exact !important;           /* Firefox 97+, Safari 15.4+ */
+    }
+    @page {size: landscape}
+    @font-face {
+    font-family: SutonnyOMJ;
+    src: url('/fonts/SutonnyOMJ Regular.ttf');
+    }
+    body{
+        font-family: SutonnyOMJ;
+        -webkit-print-color-adjust: exact;
+    }
+    .invoice_header{
+    display: table;
+    flex-wrap: nowrap;
+    background-color: #53bf5e !important;
+    -webkit-print-color-adjust: exact; 
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+    }
+    .invoice_header > div{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    }
+    input{
+    outline: none;
+    border: 1px solid #272b2b;
+    margin-bottom: 15px;
+    }
+    .content {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 20px;
+    }
+    .note {
+    text-align: center;
+    background-color: #36753c;
+    color: #fff;
+    padding: 12px;
+    }
+    .left_title{
+    display: table;
+    }
+    .right_title{
+    display: table;
+    }
+    .table-cell{
+    display: table-cell;
+    }
+    table tr td{
+    margin: 2px;
+    vertical-align: middle;
+    text-align: left;
+    }
+    table {
+    width: 100%;
+    text-align: left;
+    }
+    .succ_card{
+    margin-top: 20px;
+    display: none;
+    }
+}

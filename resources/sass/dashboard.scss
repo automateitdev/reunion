@@ -1,4 +1,11 @@
 
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+
 
     .navi {
         position: relative;
@@ -43,4 +50,34 @@
         }
     }
 
+    //responsive
+// xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px
+@include media-breakpoint-only(xs){
+    .footer{
+        position: relative !important;
+    }
+    .log {
+        padding-top: 110px;
+        padding-bottom: 50px;
+    }
+}
+@include media-breakpoint-only(sm){
+    .footer{
+        position: relative !important;
+    }
+    .log {
+        padding-top: 110px;
+        padding-bottom: 50px;
+    }
+}
+@include media-breakpoint-only(md){
+    .footer{
+        position: relative !important;
+    }
+    .log {
+        padding-top: 110px;
+        padding-bottom: 50px;
+    }
+}
+@include media-breakpoint-only(lg){}
 

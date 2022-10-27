@@ -97,13 +97,58 @@
             outline: 0;
             box-shadow: 0 0 0 0rem rgba(13, 110, 253, 0.25);
         }
-     @font-face {
-    font-family: SutonnyOMJ;
-    src: url('/fonts/SutonnyOMJ Regular.ttf');
-    }
-    body{
-      font-family: SutonnyOMJ;
-    }
+        @media (max-width: 575.98px) {
+            .footer {
+                position: relative !important;
+            }
+            .log {
+                padding-top: 110px;
+                padding-bottom: 50px;
+            }
+            .social ul li {
+                margin: 0 0px;
+            }
+            .social ul li a {
+                border-radius: 0;
+            }
+        }
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .footer {
+                position: relative !important;
+            }
+            .log {
+                padding-top: 110px;
+                padding-bottom: 50px;
+            }
+            .social ul li {
+                margin: 0 0px;
+            }
+            .social ul li a {
+                border-radius: 0;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .footer {
+                position: relative !important;
+            }
+            .log {
+                padding-top: 110px;
+                padding-bottom: 50px;
+            }
+            .social ul li {
+                margin: 0 0px;
+            }
+            .social ul li a {
+                border-radius: 0;
+            }
+        }
+        @font-face {
+            font-family: SutonnyOMJ;
+            src: url('/fonts/SutonnyOMJ Regular.ttf');
+        }
+        body{
+            font-family: SutonnyOMJ;
+        }
         
     </style>
     

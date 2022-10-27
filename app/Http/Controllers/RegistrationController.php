@@ -12,12 +12,7 @@ use App\Models\Tshirt;
 use App\Models\DressCategory;
 use App\Models\Participent;
 use App\Models\Confirmation;
-// use Barryvdh\DomPDF\PDF;
-// use Barryvdh\DomPDF\Facade\Pdf;
-use Barryvdh\DomPDF\Facade as PDF;
-use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
-use Barryvdh\DomPDF\PDF as DomPDFPDF;
-use MPDF;
+use niklasravnsborg\LaravelPdf\Facades\Pdf as PDF;
 use shurjopayv2\ShurjopayLaravelPackage8\Http\Controllers\ShurjopayController;
 
 class RegistrationController extends Controller
@@ -164,16 +159,19 @@ class RegistrationController extends Controller
         // $input->transaction_status = $list[0]['transaction_status'];
         // $input->save();
         $participents = Participent::all();
-        // return view('payment', compact('participents'));
+        return view('payment', compact('participents'));
 
         // $pdf = Pdf::loadView('payment');
         // return $pdf->download('invoice.pdf');
         
-        $pdf = FacadePdf::loadView('payment', compact('participents'))->setPaper('a4');
-        return $pdf->download('invoice.pdf');
+        // $pdf = FacadePdf::loadView('payment', compact('participents'))->setPaper('a4');
+        // return $pdf->download('invoice.pdf');
+        // $pdf = PDF::loadView('payment', compact('participents'));
+        // return $pdf->download('card.pdf');
     }
 
-    
+    // Bbhs$1234
+    // cadmin_bbhs
     /**
      * Display the specified resource.
      *
@@ -217,5 +215,9 @@ class RegistrationController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function verifyPaymentfail()
+    {
+        return view('cancel');
     }
 }
