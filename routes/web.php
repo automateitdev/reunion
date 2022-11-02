@@ -93,4 +93,5 @@ Route::delete('/branch-committe/delete/{id}',[BranchCommitteeController::class,'
 
 // Applicant Info
 Route::get('/applicant-info', [ApplicantController::class, 'index'])->name('applicant.index');
+Route::get('/applicant-list', [ApplicantController::class, 'applicant'])->name('applicantlist.index');
 

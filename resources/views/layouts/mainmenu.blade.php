@@ -44,7 +44,7 @@
                                 <li><a class="dropdown-item" href="{{route('main.com.view')}}">সূূবর্ণ জয়ন্তী পরিচালনা মূল কমিটি</a></li>
                                 <li><a class="dropdown-item" href="{{route('sub.com.view')}}">সূূবর্ণ জয়ন্তী পরিচালনা শাখা কমিটি</a></li>
                                 <li><a class="dropdown-item" href="{{route('branch.com.view')}}">সূূবর্ণ জয়ন্তী পরিচালনা উপ শাখা কমিটি</a></li>
-                                <li><a class="dropdown-item" href="#">আবেদনকারীর তালিকা</a></li>
+                                <li><a class="dropdown-item" href="{{route('applicantlist.index')}}">আবেদনকারীর তালিকা</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

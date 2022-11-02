@@ -20,6 +20,13 @@ class ApplicantController extends Controller
         return view('layouts.dashboard.applicant.index', compact('participents', 'confirmations'));
     }
 
+    public function applicant()
+    {
+        $participents = Participent::all();
+        $confirmations = Confirmation::all();
+        return view('layouts.frontend.applicant', compact('participents', 'confirmations'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
