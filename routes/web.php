@@ -11,6 +11,7 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\ManagementInfoController;
 use App\Http\Controllers\SubCommitteeController;
 use App\Http\Controllers\BranchCommitteeController;
+use App\Http\Controllers\ApplicantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,4 +90,7 @@ Route::post('/branch-committe/store', [BranchCommitteeController::class, 'store'
 Route::get('/branch-committe/edit/{id}',[BranchCommitteeController::class,'edit'])->name('branch-committe.edit');
 Route::post('/branch-committe/update/{id}',[BranchCommitteeController::class,'update'])->name('branch-committe.update');
 Route::delete('/branch-committe/delete/{id}',[BranchCommitteeController::class,'destroy'])->name('branch-committe.destroy');
+
+// Applicant Info
+Route::get('/applicant-info', [ApplicantController::class, 'index'])->name('applicant.index');
 

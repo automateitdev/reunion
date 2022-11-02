@@ -10894,6 +10894,30 @@ textarea.form-control-lg {
   width: 100%;
 }
 
+.mb-25 {
+  line-height: 36px;
+  font-size: 24px;
+  color: #444 !important;
+  font-weight: 600;
+  margin-top: 11px;
+}
+.mb-25 a {
+  color: #19686d;
+}
+.mb-25 .pull-right {
+  float: right;
+  padding: 10px 18px !important;
+  background-color: #fff;
+  border: 2px solid #ddd !important;
+  color: #455a64 !important;
+  border-radius: 60px !important;
+}
+.mb-25 .pull-right:hover {
+  background: #fafafa;
+  border: 2px solid #19686d !important;
+  color: #19686d !important;
+}
+
 @media (max-width: 575.98px) {
   .footer {
     position: relative !important;
