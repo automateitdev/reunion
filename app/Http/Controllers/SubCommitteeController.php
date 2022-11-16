@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SubCommittee;
+use App\Models\Subcommetteelist;
 
 class SubCommitteeController extends Controller
 {
@@ -25,7 +26,8 @@ class SubCommitteeController extends Controller
      */
     public function create()
     {
-        return view('layouts.dashboard.subcom.create');
+        $subcomlists = Subcommetteelist::all();
+        return view('layouts.dashboard.subcom.create', compact('subcomlists'));
     }
 
     /**

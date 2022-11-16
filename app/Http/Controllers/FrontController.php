@@ -10,6 +10,7 @@ use App\Models\SponsorInfo;
 use App\Models\ManagementInfo;
 use App\Models\SubCommittee;
 use App\Models\BranchCommittee;
+use App\Models\Gallery;
 
 class FrontController extends Controller
 {
@@ -23,15 +24,16 @@ class FrontController extends Controller
         $logos = Logo::all();
         $sliders = Slider::all();
         $abouts = About::all();
+        $galleries = Gallery::all();
         $sponsorinfos = SponsorInfo::all();
-        return view('welcome', compact('logos','sliders','abouts','sponsorinfos'));
+        return view('welcome', compact('logos','sliders','abouts','sponsorinfos', 'galleries'));
     }
 
     public function maincommiteeview()
     {
         $logos = Logo::all();
         $managementInfo = ManagementInfo::all();
-        return view('main_committe', compact('logos','managementInfo'));
+        return view('maincommitte', compact('logos','managementInfo'));
     }
 
     public function subcommiteeview()

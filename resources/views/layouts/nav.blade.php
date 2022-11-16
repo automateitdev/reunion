@@ -37,8 +37,8 @@
                             @endif
 
                             <a href="{{ route('register') }}">
-    <button class="re_btn">register me</button>
-    </a>
+                            <button class="re_btn">register me</button>
+                            </a>
                         </div>
                     </div>
                 </div>

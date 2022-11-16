@@ -10857,6 +10857,19 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.form-control:focus {
+  color: #212529;
+  background-color: #f8fafc;
+  border-color: #04913d;
+  outline: 0;
+  box-shadow: 0 0 0 0rem rgba(13, 110, 253, 0.25);
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: 700;
+  font-size: 20px;
+}
+
 .navi {
   position: relative;
   z-index: 9999;

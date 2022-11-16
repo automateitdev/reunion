@@ -36,6 +36,7 @@ class CreateParticipentsTable extends Migration
             $table->string('designation')->nullable();
             $table->string('org_address')->nullable();
             $table->string('status')->nullable();
+            $table->string('reference')->nullable();
             $table->timestamps();
         });
     }

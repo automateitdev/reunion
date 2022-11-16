@@ -24,3 +24,43 @@ $(document).ready(function(){
 
     });
 });
+
+$(document).ready(function(){
+  $(".kjsyu").hover(
+    function(){
+    $(".able").addClass("show");
+    },
+    function(){
+      $(".able").removeClass("show");
+    }
+  );
+  $(".able").hover(function(){
+    $(".able").addClass("show");
+  });
+
+  $(".bhjuy").hover(
+    function(){
+    $(".abler").addClass("show");
+    },
+    function(){
+      $(".abler").removeClass("show");
+    }
+  );
+  $(".abler").hover(function(){
+    $(".abler").addClass("show");
+  });
+});
+
+//reg
+$(function(){
+  $("#mySelectBox").change(function(){
+      if($(this).val() =="1")
+      {
+          $("#register_table").css({"display":"block"});
+      }
+      else
+      {
+          $("#register_table").css({"display":"none"});
+      }
+  });
+});

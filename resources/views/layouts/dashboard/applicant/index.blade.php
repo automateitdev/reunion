@@ -25,17 +25,19 @@
                     </thead>
                     <tbody>
                         @foreach($confirmations as $confirmation)
-                            @foreach($participents as $item)
-                                @if($confirmation->name == $item->name && $confirmation->mobile == $item->mobile)
-                                    <tr>
-                                        <th scope="row">{{$item->id}}</th>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->mobile}}</td>
-                                        <td>{{$item->organization}}</td>
-                                        <td><img src="{{asset('images/participent/'.$item->photo)}}" alt="" width="100px" height="100px"></td>
-                                    </tr>
-                                @endif
-                            @endforeach
+                            @if($confirmation->msg == Success)
+                                @foreach($participents as $item)
+                                    @if($confirmation->name == $item->name && $confirmation->mobile == $item->mobile)
+                                        <tr>
+                                            <th scope="row">{{$confirmation->id}}</th>
+                                            <td>{{$item->name}}</td>
+                                            <td>{{$item->mobile}}</td>
+                                            <td>{{$item->organization}}</td>
+                                            <td><img src="{{asset('images/participent/'.$item->photo)}}" alt="" width="100px" height="100px"></td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

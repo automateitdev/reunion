@@ -61,6 +61,7 @@ text-align: left;
 }
 .succ_card{
 padding-top: 20px !important;
+padding-bottom: 10px;
 display: flex;
 float: right;
 }
@@ -131,5 +132,8 @@ float: right;
     .succ_card{
     margin-top: 20px;
     display: none;
+    }
+    .navi, .footer, #main-menu{
+      display: none;
     }
 }

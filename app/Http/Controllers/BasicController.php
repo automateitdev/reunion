@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Logo;
 use App\Models\Slider;
 use App\Models\About;
+use App\Models\Gallery;
 
 class BasicController extends Controller
 {
@@ -19,7 +20,8 @@ class BasicController extends Controller
         $logos = Logo::all();
         $sliders = Slider::all();
         $abouts = About::all();
-        return view('layouts.dashboard.basic.index', compact('logos','sliders','abouts'));
+        $galleries = Gallery::all();
+        return view('layouts.dashboard.basic.index', compact('logos','sliders','abouts','galleries'));
     }
 
     /**
@@ -114,6 +116,28 @@ class BasicController extends Controller
         return redirect(route('basic-info.index'));
     }
 
+    // gallery
+    public function gallerystore(Request $request)
+    {
+        $this->validate($request,[
+            'abimg' => 'required',
+        ]);
+
+        $input = new Gallery();
+        if($request->hasFile('abimg')){
+            $file = $request->file('abimg');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('images/gallery/',$filename);
+            $input->abimg = $filename;
+        }else{
+            $input->abimg = '';
+        }
+
+        $input->save();
+        return redirect(route('basic-info.index'));
+    }
+
     /**
      * Display the specified resource.
      *
@@ -167,6 +191,11 @@ class BasicController extends Controller
     public function aboutdestroy($id)
     {
         About::find($id)->delete();
+        return redirect()->back();
+    }
+    public function gallerydestroy($id)
+    {
+        Gallery::find($id)->delete();
         return redirect()->back();
     }
 }

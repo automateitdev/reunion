@@ -102,6 +102,7 @@ class RegistrationController extends Controller
         $input->organization = $request->organization;
         $input->designation = $request->designation;
         $input->org_address = $request->org_address;
+        $input->reference = "null";
         $input->status = "Pending";
 
         if($request->hasFile('photo')){
@@ -139,37 +140,102 @@ class RegistrationController extends Controller
 
     public function verifyPayment(Request $request)
     {
-        // $order_id = $request->order_id;
-        // $shurjopay_service = new ShurjopayController();
+        $order_id = $request->order_id;
+        $shurjopay_service = new ShurjopayController();
 
-        // $data = $shurjopay_service->verify($order_id);
-        // $list=json_decode($data,true);
+        $data = $shurjopay_service->verify($order_id);
+        $list=json_decode($data,true);
         
         // echo $list[0]['order_id'];
         // echo "<pre>";
         // print_r($list);
         // echo "</pre>";
         
-        // $input = new Confirmation();
-        // $input->order_id = $list[0]['order_id'];
-        // $input->amount = $list[0]['amount'];
-        // $input->mobile = $list[0]['customer_order_id'];
-        // $input->msg = $list[0]['sp_massage'];
-        // $input->name = $list[0]['name'];
-        // $input->transaction_status = $list[0]['transaction_status'];
-        // $input->save();
+        $input = new Confirmation();
+        $input->order_id = $list[0]['order_id'];
+        $input->amount = $list[0]['amount'];
+        $input->mobile = $list[0]['customer_order_id'];
+        $input->msg = $list[0]['sp_massage'];
+        $input->name = $list[0]['name'];
+        $input->transaction_status = $list[0]['transaction_status'];
+        $input->save();
         $participents = Participent::all();
         return view('payment', compact('participents'));
-
-        // $pdf = Pdf::loadView('payment');
-        // return $pdf->download('invoice.pdf');
-        
-        // $pdf = FacadePdf::loadView('payment', compact('participents'))->setPaper('a4');
-        // return $pdf->download('invoice.pdf');
-        // $pdf = PDF::loadView('payment', compact('participents'));
-        // return $pdf->download('card.pdf');
     }
 
+    public function manualReg(Request $request)
+    {
+        $batches = Batch::all();
+        $categories = Category::all();
+        $districts = District::all();
+        $divisions = Division::all();
+        $bloods = Blood::all();
+        $thsirts = Tshirt::all();
+        $dresscategories = DressCategory::all();
+        return view('layouts.dashboard.manual.create', compact('batches','categories','districts','divisions','bloods','thsirts','dresscategories'));
+    }
+    public function manualRegStore(Request $request)
+    {
+        $this->validate($request,[
+            'add_id' => 'nullable',
+            'batch_id' => 'nullable',
+            'cat_id' => 'required',
+            'pay' => 'required',
+            'name' => 'required',
+            'g_name' => 'required',
+            'email' => 'nullable',
+            'mobile' => 'required',
+            'fb_link' => 'nullable',
+            'address' => 'required',
+            'thana' => 'required',
+            'district_id' => 'required',
+            'division_id' => 'nullable',
+            'blood_id' => 'nullable',
+            'dress_cat_id' => 'nullable',
+            'size_id' => 'nullable',
+            'photo' => 'required',
+            'organization' => 'nullable',
+            'designation' => 'nullable',
+            'org_address' => 'nullable',
+            'status' => 'required',
+            'reference'=> 'nullable'
+        ]);
+        $input = new Participent();
+        
+        $input->add_id = $request->add_id;
+        $input->batch_id = $request->batch_id;
+        $input->cat_id = $request->cat_id;
+        $input->pay = $request->pay;
+        $input->name = $request->name;
+        $input->g_name = $request->g_name;
+        $input->email = $request->email;
+        $input->mobile = $request->mobile;
+        $input->fb_link = $request->fb_link;
+        $input->address = $request->address;
+        $input->thana = $request->thana;
+        $input->district_id = $request->district_id;
+        $input->division_id = $request->division_id;
+        $input->blood_id = $request->blood_id;
+        $input->dress_cat_id = $request->dress_cat_id;
+        $input->size_id = $request->size_id;
+        $input->organization = $request->organization;
+        $input->designation = $request->designation;
+        $input->org_address = $request->org_address;
+        $input->reference = $request->reference;
+        $input->status = "Success";
+
+        if($request->hasFile('photo')){
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('images/participent/',$filename);
+            $input->photo = $filename;
+        }else{
+            $input->photo = '';
+        }
+        $input->save();
+        return redirect()->route('manualReg')->with('message', 'Data Upload Successfully');
+    }
     // Bbhs$1234
     // cadmin_bbhs
     /**

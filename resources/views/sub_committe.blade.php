@@ -24,6 +24,7 @@
   </head>
   <body>
     @include('layouts.nav')
+    @include('layouts.mainmenu')
     @include('layouts.subCom')
     @include('layouts.footer')
 

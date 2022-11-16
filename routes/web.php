@@ -36,13 +36,17 @@ Route::post('payment-gateway', [RegistrationController::class, 'store'])->name('
 Route::get('/registerCategory', [RegistrationController::class, 'registerCategory']);
 Route::get('success-url', [RegistrationController::class, 'verifyPayment']);
 Route::get('payment-fail', [RegistrationController::class, 'verifyPaymentfail']);
+//manual reg
+Route::get('/registration', [RegistrationController::class, 'manualReg'])->name('manualReg');
+Route::get('/registration/create', [RegistrationController::class, 'manualReg'])->name('manualRegCreate');
+Route::post('/registration/store', [RegistrationController::class, 'manualRegStore'])->name('manualRegStore');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 
-Route::get('/main_commitee', [FrontController::class, 'maincommiteeview'])->name('main.com.view');
-Route::get('/sub_commitee', [FrontController::class, 'subcommiteeview'])->name('sub.com.view');
-Route::get('/branch_commitee', [FrontController::class, 'branchcommiteeview'])->name('branch.com.view');
+Route::get('/committee', [FrontController::class, 'maincommiteeview'])->name('main.com.view');
+// Route::get('/sub_commitee', [FrontController::class, 'subcommiteeview'])->name('sub.com.view');
+// Route::get('/branch_commitee', [FrontController::class, 'branchcommiteeview'])->name('branch.com.view');
 
 
 
@@ -56,6 +60,9 @@ Route::delete('/basic-info/slider/{id}',[BasicController::class,'sliderdestroy']
 
 Route::post('/basic-info/about', [BasicController::class, 'aboutstore'])->name('basic-info.about');
 Route::delete('/basic-info/about/{id}',[BasicController::class,'aboutdestroy'])->name('basic-info.aboutdelete');
+
+Route::post('/basic-info/gallery', [BasicController::class, 'gallerystore'])->name('basic-info.gallery');
+Route::delete('/basic-info/gallery/{id}',[BasicController::class,'gallerydestroy'])->name('basic-info.gallerydelete');
 
 
 //sponsor

@@ -1,4 +1,14 @@
 
+@extends('layouts.maincommitte')
+
+@section('committee')
+<style>
+    #com{
+        padding-top: 100px;
+        padding-bottom: 180px;
+    }
+</style>
+
 <div id="com">
     <div class="container">
         <div class="card">
@@ -33,9 +43,4 @@
     </div>
 </div>
 
-<style>
-    #com{
-        padding-top: 100px;
-        padding-bottom: 180px;
-    }
-</style>
+@endsection

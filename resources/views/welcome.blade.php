@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>bhorebazar</title>
     <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.2/owl.carousel.css" rel="stylesheet" />
+    
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        
+    
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard.scss')}}">
    
@@ -26,11 +28,10 @@
   <body>
     @include('layouts.nav')
     @include('layouts.mainmenu')
-    <!-- <div class="makeup_slider"></div> -->
     @include('layouts.carousel')
     @include('layouts.about')
-    <!-- @include('layouts.speakers') -->
     @include('layouts.sponsor')
+    @include('layouts.gallery')
     @include('layouts.footer')
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -43,8 +44,9 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
    
-    
-  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.2/owl.carousel.js"></script>
+    <script src="{{asset('js/form.js')}}"></script>
+  
 
   <script>
       var myCarousel = document.querySelector('#reunioncarousel')
@@ -55,7 +57,7 @@
   </script>
   <script>
       // Set the date we're counting down to
-      var countDownDate = new Date("Dec 5, 2022 15:37:25").getTime();
+      var countDownDate = new Date("Dec 31, 2022 15:37:25").getTime();
 
       // Update the count down every 1 second
       var x = setInterval(function() {
@@ -84,6 +86,36 @@
       }, 1000);
   </script>
   <script>
+      // Set the date we're counting down to
+      var countDownDatet = new Date("Feb 18, 2023 15:37:25").getTime();
+
+      // Update the count down every 1 second
+      var x = setInterval(function() {
+
+        // Get today's date and time
+        var nowt = new Date().getTime();
+          
+        // Find the distance between now and the count down date
+        var distance = countDownDatet - nowt;
+          
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          
+        // Output the result in an element with id="demo"
+        document.getElementById("programdate").innerHTML = days + "D " + hours + "H "
+        + minutes + "M " + seconds + "S ";
+          
+        // If the count down is over, write some text 
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("programdate").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+  </script>
+  <script>
       // var className = "bgChange";
       // var scrollTrigger = 60;
 
@@ -99,6 +131,29 @@
   <script>
     $(document).ready(function() {
     $(".dropdown-toggle").dropdown();
-});
+    });
   </script>
+  <script>
+    // owl carousel
+    $(document).ready(function () {
+      $(".owl-carousel").owlCarousel({
+        autoPlay: 3000, //Set AutoPlay to 3 seconds
+        items: 5,
+        center: true,
+        itemsDesktop: [1199, 3],
+        itemsDesktopSmall: [979, 3]
+      });
+    });
+    $(document).ready(function () {
+      $(".owl-carousel-household").owlCarousel({
+        autoPlay: 5000, //Set AutoPlay to 3 seconds
+        items: 5,
+        center: true,
+        itemsDesktop: [10, 100],
+        itemsDesktopSmall: [10, 100]
+      });
+    });
+    // end carousel
+  </script>
+  </body>
 </html>

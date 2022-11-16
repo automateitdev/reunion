@@ -42,8 +42,32 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{route('main.com.view')}}">সূূবর্ণ জয়ন্তী পরিচালনা মূল কমিটি</a></li>
-                                <li><a class="dropdown-item" href="{{route('sub.com.view')}}">সূূবর্ণ জয়ন্তী পরিচালনা শাখা কমিটি</a></li>
-                                <li><a class="dropdown-item" href="{{route('branch.com.view')}}">সূূবর্ণ জয়ন্তী পরিচালনা উপ শাখা কমিটি</a></li>
+                                <li>
+                                    <a class="dropdown-item kjsyu">সূূবর্ণ জয়ন্তী পরিচালনা শাখা কমিটি</a>
+                                    <ul class="dropdown-menu able" aria-labelledby="navbarDropdownMenuLinkone">
+                                        <li><a class="dropdown-item" href="#">ফেনী কমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">চট্রগ্রাম কমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">ঢাকা কমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">প্রবাসী কমিটি</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item bhjuy">সূূবর্ণ জয়ন্তী পরিচালনা উপকমিটি</a>
+                                    <ul class="dropdown-menu abler" aria-labelledby="navbarDropdownMenuLinkone">
+                                        <li><a class="dropdown-item" href="#">প্রচার উপকমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">প্রকাশনা উপকমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">ছাত্র বিষয়ক উপকমিটি (১৯৭৮ - ১৯৯৯)</a></li>
+                                        <li><a class="dropdown-item" href="#">ছাত্র বিষয়ক উপকমিটি (২০২২ - ২০২২)</a></li>
+                                        <li><a class="dropdown-item" href="#">তথ্য ও পরামর্শক উপকমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">সাজ সজ্জা উপকমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">শৃঙ্খলা উপকমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">আপ্যায়ন উপকমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">অভ্যর্থনা উপকমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">সার্বিক ব্যবস্থাপনা উপকমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">উপহার সামগ্রী ক্রয় ও বিতরণ উপকমিটি</a></li>
+                                        <li><a class="dropdown-item" href="#">বিবিধ উপকমিটি</a></li>
+                                    </ul>
+                                </li>
                                 <li><a class="dropdown-item" href="{{route('applicantlist.index')}}">আবেদনকারীর তালিকা</a></li>
                             </ul>
                         </li>

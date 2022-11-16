@@ -18,8 +18,8 @@ class CreateSubCommitteesTable extends Migration
             $table->string('name');
             $table->text('designation');
             $table->text('mobile_no');
-            $table->text('email');
-            $table->mediumText('image');
+            $table->text('email')->nullable();
+            $table->mediumText('image')->nullable();
             $table->timestamps();
         });
     }

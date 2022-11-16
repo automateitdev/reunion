@@ -24,18 +24,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php 
+                            $i=1;
+                        @endphp
                         @foreach($confirmations as $confirmation)
-                            @foreach($participents as $item)
-                                @if($confirmation->name == $item->name && $confirmation->mobile == $item->mobile)
-                                    <tr>
-                                        <th scope="row">{{$item->id}}</th>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->address}}</td>
-                                        <td>{{date('d-M-y', strtotime($item->created_at))}}</td>
-                                        <td><img src="{{asset('images/participent/'.$item->photo)}}" alt="" width="100px" height="100px"></td>
-                                    </tr>
-                                @endif
-                            @endforeach
+                            @if($confirmation->msg == "Success")
+                                @foreach($participents as $item)
+                                    @if($confirmation->name == $item->name && $confirmation->mobile == $item->mobile)
+                                        <tr>
+                                            <th scope="row">{{$i++}}</th>
+                                            <td>{{$item->name}}</td>
+                                            <td>{{$item->address}}</td>
+                                            <td>{{date('d-M-y', strtotime($item->created_at))}}</td>
+                                            <td><img src="{{asset('images/participent/'.$item->photo)}}" alt="" width="100px" height="100px"></td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

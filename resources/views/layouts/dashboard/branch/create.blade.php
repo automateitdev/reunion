@@ -41,37 +41,48 @@
      <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8">
             <div class="form-group">
-                <strong>Name:</strong>
+                <label for="" class="form-label">শাখা কমিটি নির্বাচন করুন</label>
+                <select name="" class="form-control" id="">
+                    <option value="">একটি নির্বাচন করুন</option>
+                    @foreach($branchlists as $item)
+                    <option value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8">
+            <div class="form-group">
+                <label class="form-label">নাম</label>
                 <input type="text" name="name" class="form-control" placeholder="Name">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Designation:</strong>
+                <label class="form-label">পদবী</label>
                 <input type="text" name="designation" class="form-control" placeholder="Designation">
             </div>
         </div>
         
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Mobile No:</strong>
+                <label class="form-label">মোবাইল নাম্বার</label>
                 <input type="text" name="mobile_no" class="form-control" placeholder="Mobile No">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Email:</strong>
+                <label class="form-label">ইমেইল</label>
                 <input type="text" name="email" class="form-control" placeholder="Email">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Image:</strong>
+                <label class="form-label">ছবি</label>
                 <input type="file" name="image" class="form-control" placeholder="image">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">যুক্ত করুন</button>
         </div>
     </div>
      

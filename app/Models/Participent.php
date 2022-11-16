@@ -31,7 +31,8 @@ class Participent extends Model
         'organization',
         'designation',
         'org_address',
-        'status'
+        'status',
+        'reference'
     ];
 
     public function district()

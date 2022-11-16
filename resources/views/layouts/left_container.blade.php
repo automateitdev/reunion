@@ -72,15 +72,15 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{route('sub-committe.index')}}" class="nav-link active">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Sub Commitee</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
                     <a href="{{route('branch-committe.index')}}" class="nav-link active">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Branch Commitee</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('sub-committe.index')}}" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Sub Commitee</p>
                     </a>
                   </li>
                 </ul>
@@ -121,7 +121,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Details</p>
                 </a>
@@ -150,6 +150,14 @@
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{route('manualReg')}}" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Application 
+              </p>
+            </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{route('logout')}}" class="nav-link active">

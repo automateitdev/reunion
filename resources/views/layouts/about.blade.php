@@ -4,9 +4,8 @@
                 @php
                     $abs = DB::table('abouts')->latest('id')->first();
                 @endphp
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="about-title">
-                    <!-- <span class="lopUi">About</span> -->
                     <h3 class="sdrYt">সুবর্ণ জয়ন্তী উৎসব ২০২৩</h3>
                 </div>
                 <div class="reunion-content">
@@ -18,11 +17,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-6 text-center">
-                <div class="about-title">
-                    <!-- <span class="lopUi">About</span> -->
-                    <!-- <h3 class="sdrYt">সুবর্ণ জয়ন্তী উৎসব ২০২৩</h3> -->
-                </div>
+            <div class="col-md-5 text-center">
                 <div class="about-img">
                 @if($abs->abimg)
                     <img src="{{asset('images/about/'. $abs->abimg)}}" alt="">

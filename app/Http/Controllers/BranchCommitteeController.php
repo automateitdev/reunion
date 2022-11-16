@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BranchCommittee;
+use App\Models\Branchlist;
 
 class BranchCommitteeController extends Controller
 {
@@ -25,7 +26,8 @@ class BranchCommitteeController extends Controller
      */
     public function create()
     {
-        return view('layouts.dashboard.branch.create');
+        $branchlists = Branchlist::all();
+        return view('layouts.dashboard.branch.create', compact('branchlists'));
     }
 
     /**
