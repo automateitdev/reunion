@@ -39,6 +39,7 @@ class SubCommitteeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'subcom_id' => 'required',
             'name' => 'required',
             'designation' => 'required',
             'mobile_no' => 'required',

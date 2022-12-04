@@ -15,6 +15,7 @@ class CreateBranchCommitteesTable extends Migration
     {
         Schema::create('branch_committees', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('branch_id');
             $table->string('name');
             $table->text('designation');
             $table->text('mobile_no');

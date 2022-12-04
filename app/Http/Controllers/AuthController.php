@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Logo;
+use App\Models\Branchlist;
+use App\Models\Subcommetteelist;
 
 class AuthController extends Controller
 {
     public function index(){
         $logos = Logo::all();
-        return view('auth.login');
+        $branchlists = Branchlist::all();
+        $subcomlists = Subcommetteelist::all();
+        return view('auth.login', compact('logos', 'branchlists', 'subcomlists'));
     }
 
     public function authenticate(Request $request)

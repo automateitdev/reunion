@@ -1,7 +1,7 @@
 
-@extends('layouts.maincommitte')
+@extends('master_two')
 
-@section('committee')
+@section('content')
 <style>
     #com{
         padding-top: 100px;

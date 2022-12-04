@@ -9,10 +9,15 @@ class SubCommittee extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'subcom_id',
         'name',
         'designation',
         'mobile_no',
         'email',
         'image'
     ];
+    public function sublist()
+    {
+        return $this->belongsTo(Subcommetteelist::class, "subcom_id");
+    }
 }

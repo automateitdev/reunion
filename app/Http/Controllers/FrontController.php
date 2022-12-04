@@ -11,6 +11,8 @@ use App\Models\ManagementInfo;
 use App\Models\SubCommittee;
 use App\Models\BranchCommittee;
 use App\Models\Gallery;
+use App\Models\Branchlist;
+use App\Models\Subcommetteelist;
 
 class FrontController extends Controller
 {
@@ -26,30 +28,38 @@ class FrontController extends Controller
         $abouts = About::all();
         $galleries = Gallery::all();
         $sponsorinfos = SponsorInfo::all();
-        return view('welcome', compact('logos','sliders','abouts','sponsorinfos', 'galleries'));
+        $branchlists = Branchlist::all();
+        $subcomlists = Subcommetteelist::all();
+        return view('welcome', compact('logos','sliders','abouts','sponsorinfos', 'galleries', 'branchlists', 'subcomlists'));
     }
 
     public function maincommiteeview()
     {
         $logos = Logo::all();
         $managementInfo = ManagementInfo::all();
-        return view('maincommitte', compact('logos','managementInfo'));
+        $branchlists = Branchlist::all();
+        $subcomlists = Subcommetteelist::all();
+        return view('layouts.committee.maincom', compact('logos','managementInfo', 'branchlists', 'subcomlists'));
     }
 
-    public function subcommiteeview()
-    {
-        $logos = Logo::all();
-        $subCommittee = SubCommittee::all();
-        return view('sub_committe', compact('logos','subCommittee'));
-    }
 
-    public function branchcommiteeview()
+    public function branchcommiteeview(Request $request)
     {
         $logos = Logo::all();
-        $branchCommittee = BranchCommittee::all();
-        return view('branch_committee', compact('logos','branchCommittee'));
+        $branchlists = Branchlist::all();
+        $subcomlists = Subcommetteelist::all();
+        $branchCommittee = BranchCommittee::where('branch_id', $request->id)->get();
+        return view('layouts.committee.branch', compact('logos','branchCommittee','branchlists', 'subcomlists'));
     }
     
+    public function subcommiteeview(Request $request)
+    {
+        $logos = Logo::all();
+        $subCommittee = SubCommittee::where('subcom_id', $request->id)->get();
+        $branchlists = Branchlist::all();
+        $subcomlists = Subcommetteelist::all();
+        return view('layouts.committee.subCom', compact('logos','subCommittee', 'branchlists', 'subcomlists'));
+    }
     /**
      * Show the form for creating a new resource.
      *

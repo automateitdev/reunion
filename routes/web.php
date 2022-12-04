@@ -30,6 +30,7 @@ Route::get('/', [FrontController::class,'index'])->name('landingPage');
 
 Auth::routes();
 
+Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::get('logout', [AuthController::class,'logout'])->name('logout');
 Route::get('/register', [RegistrationController::class, 'index'])->name('register');
 Route::post('payment-gateway', [RegistrationController::class, 'store'])->name('register.store');
@@ -45,8 +46,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 
 Route::get('/committee', [FrontController::class, 'maincommiteeview'])->name('main.com.view');
-// Route::get('/sub_commitee', [FrontController::class, 'subcommiteeview'])->name('sub.com.view');
-// Route::get('/branch_commitee', [FrontController::class, 'branchcommiteeview'])->name('branch.com.view');
+Route::get('/branch_commitee/{name}/{id}', [FrontController::class, 'branchcommiteeview'])->name('branch.com.view');
+Route::get('/sub_commitee/{name}/{id}', [FrontController::class, 'subcommiteeview'])->name('sub.com.view');
+
 
 
 

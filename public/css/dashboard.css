@@ -10857,6 +10857,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.btn-check:focus + .btn, .btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0rem rgba(13, 110, 253, 0.25);
+}
+
 .form-control:focus {
   color: #212529;
   background-color: #f8fafc;

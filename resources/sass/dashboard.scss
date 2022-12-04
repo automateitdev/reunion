@@ -6,17 +6,21 @@
 @import '~bootstrap/scss/bootstrap';
 @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
 
-.form-control:focus {
-    color: #212529;
-    background-color: #f8fafc;
-    border-color: #04913d;
-    outline: 0;
-    box-shadow: 0 0 0 0rem rgba(13, 110, 253, 0.25);
-}
-label:not(.form-check-label):not(.custom-file-label) {
-    font-weight: 700;
-    font-size: 20px;
-}
+    .btn-check:focus + .btn, .btn:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0rem rgba(13,110,253,.25);
+    }
+    .form-control:focus {
+        color: #212529;
+        background-color: #f8fafc;
+        border-color: #04913d;
+        outline: 0;
+        box-shadow: 0 0 0 0rem rgba(13, 110, 253, 0.25);
+    }
+    label:not(.form-check-label):not(.custom-file-label) {
+        font-weight: 700;
+        font-size: 20px;
+    }
     .navi {
         position: relative;
         z-index: 9999;

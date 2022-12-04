@@ -12,6 +12,8 @@ use App\Models\Tshirt;
 use App\Models\DressCategory;
 use App\Models\Participent;
 use App\Models\Confirmation;
+use App\Models\Branchlist;
+use App\Models\Subcommetteelist;
 use niklasravnsborg\LaravelPdf\Facades\Pdf as PDF;
 use shurjopayv2\ShurjopayLaravelPackage8\Http\Controllers\ShurjopayController;
 
@@ -31,7 +33,9 @@ class RegistrationController extends Controller
         $bloods = Blood::all();
         $thsirts = Tshirt::all();
         $dresscategories = DressCategory::all();
-        return view('auth.register', compact('batches','categories','districts','divisions','bloods','thsirts','dresscategories'));
+        $branchlists = Branchlist::all();
+        $subcomlists = Subcommetteelist::all();
+        return view('auth.register', compact('batches','categories','districts','divisions','bloods','thsirts','dresscategories', 'branchlists', 'subcomlists'));
     }
 
     public function registerCategory(Request $request)
@@ -141,6 +145,7 @@ class RegistrationController extends Controller
     public function verifyPayment(Request $request)
     {
         $order_id = $request->order_id;
+        // $order_id = $request->order_id;
         $shurjopay_service = new ShurjopayController();
 
         $data = $shurjopay_service->verify($order_id);
@@ -150,17 +155,31 @@ class RegistrationController extends Controller
         // echo "<pre>";
         // print_r($list);
         // echo "</pre>";
+        $finalOrder_id = $list[0]['order_id'];
+
+        // $input = new Confirmation();
+        // $input->order_id = $list[0]['order_id'];
+        // $input->amount = $list[0]['amount'];
+        // $input->mobile = $list[0]['customer_order_id'];
+        // $input->msg = $list[0]['sp_massage'];
+        // $input->name = $list[0]['name'];
+        // $input->transaction_status = $list[0]['transaction_status'];
+        // $input->save();
         
-        $input = new Confirmation();
-        $input->order_id = $list[0]['order_id'];
-        $input->amount = $list[0]['amount'];
-        $input->mobile = $list[0]['customer_order_id'];
-        $input->msg = $list[0]['sp_massage'];
-        $input->name = $list[0]['name'];
-        $input->transaction_status = $list[0]['transaction_status'];
-        $input->save();
+        $confirmations = Confirmation::updateOrCreate(
+           ['order_id' => $list[0]['order_id']],
+           [
+            'amount' => $list[0]['amount'],
+            'mobile' => $list[0]['customer_order_id'],
+            'msg' => $list[0]['sp_massage'],
+            'name' => $list[0]['name'],
+            'transaction_status' => $list[0]['transaction_status'],
+        ]
+        );
         $participents = Participent::all();
-        return view('payment', compact('participents'));
+        $branchlists = Branchlist::all();
+        $subcomlists = Subcommetteelist::all();
+        return view('payment', compact('participents', 'finalOrder_id', 'branchlists', 'subcomlists'));
     }
 
     public function manualReg(Request $request)

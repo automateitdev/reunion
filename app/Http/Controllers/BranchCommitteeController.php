@@ -39,6 +39,7 @@ class BranchCommitteeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'branch_id' => 'required',
             'name' => 'required',
             'designation' => 'required',
             'mobile_no' => 'required',

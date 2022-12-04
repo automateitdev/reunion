@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Participent;
 use App\Models\Confirmation;
+use App\Models\Branchlist;
+use App\Models\Subcommetteelist;
 
 class ApplicantController extends Controller
 {
@@ -24,7 +26,9 @@ class ApplicantController extends Controller
     {
         $participents = Participent::all();
         $confirmations = Confirmation::all();
-        return view('layouts.frontend.applicant', compact('participents', 'confirmations'));
+        $branchlists = Branchlist::all();
+        $subcomlists = Subcommetteelist::all();
+        return view('layouts.frontend.applicant', compact('participents', 'confirmations', 'branchlists', 'subcomlists'));
     }
 
     /**

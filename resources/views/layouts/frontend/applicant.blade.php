@@ -27,19 +27,19 @@
                         @php 
                             $i=1;
                         @endphp
-                        @foreach($confirmations as $confirmation)
+                        @foreach($confirmations->unique('order_id') as $confirmation)
+                       
                             @if($confirmation->msg == "Success")
-                                @foreach($participents as $item)
-                                    @if($confirmation->name == $item->name && $confirmation->mobile == $item->mobile)
-                                        <tr>
-                                            <th scope="row">{{$i++}}</th>
-                                            <td>{{$item->name}}</td>
-                                            <td>{{$item->address}}</td>
-                                            <td>{{date('d-M-y', strtotime($item->created_at))}}</td>
-                                            <td><img src="{{asset('images/participent/'.$item->photo)}}" alt="" width="100px" height="100px"></td>
-                                        </tr>
-                                    @endif
-                                @endforeach
+                                @php 
+                                    $participent = $participents->where('name', $confirmation->name)->where('mobile', $confirmation->mobile)->first();
+                                @endphp
+                                    <tr>
+                                        <th scope="row">{{$i++}}</th>
+                                        <td>{{$confirmation->name}}</td>
+                                        <td>{{$participent->address ?? ''}}</td>
+                                        <td>{{date('d-M-y', strtotime($confirmation->created_at))}}</td>
+                                        <td><img src="{{asset('images/participent/'.$participent->photo) ?? ' '}}" alt="" width="100px" height="100px"></td>
+                                    </tr>
                             @endif
                         @endforeach
                     </tbody>

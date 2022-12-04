@@ -24,18 +24,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($confirmations as $confirmation)
-                            @if($confirmation->msg == Success)
-                                @foreach($participents as $item)
-                                    @if($confirmation->name == $item->name && $confirmation->mobile == $item->mobile)
+                        @php 
+                            $i=1;
+                        @endphp
+                        @foreach($confirmations->unique('order_id') as $confirmation)
+                            @if($confirmation->msg == "Success")
+                                @php 
+                                    $participent = $participents->where('name', $confirmation->name)->where('mobile', $confirmation->mobile)->first();
+                                    var_dump($participent);
+                                @endphp
+                                @foreach($participent as $item)
                                         <tr>
-                                            <th scope="row">{{$confirmation->id}}</th>
-                                            <td>{{$item->name}}</td>
-                                            <td>{{$item->mobile}}</td>
+                                            <th scope="row">{{$i++}}</th>
+                                            <td>{{$confirmation->name}}</td>
+                                            <td>{{$confirmation->mobile}}</td>
                                             <td>{{$item->organization}}</td>
                                             <td><img src="{{asset('images/participent/'.$item->photo)}}" alt="" width="100px" height="100px"></td>
                                         </tr>
-                                    @endif
                                 @endforeach
                             @endif
                         @endforeach

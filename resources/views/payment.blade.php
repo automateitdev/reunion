@@ -49,60 +49,63 @@
               </colgroup>
               <tbody>
                 @php
-                $confirmations = \App\Models\Confirmation::all();
-
-
+                  $confirmations = \App\Models\Confirmation::all();
                 @endphp
-                @foreach($participents as $pa)
-                @foreach($confirmations as $con)
-                @if($pa->name == $con->name && $pa->mobile == $con->mobile)
-                <tr>
-                  <td>সদস্য নংঃ</td>
-                  <td>{{$pa->id}}</td>
-                  <td>তারিখঃ</td>
-                  <td>{{date('d-M-y', strtotime($pa->created_at))}}</td>
-                </tr>
 
-                <tr>
-                  <td>নামঃ</td>
-                  <td>{{$pa->name}}</td>
-                  <td>মোবাইল নাম্বারঃ</td>
-                  <td>{{$pa->mobile}}</td>
-                </tr>
+                
+                  @foreach($confirmations as $con)
+                  @php 
+                    $pa = $participents->where('name', $con->name)->where('mobile', $con->mobile)->first();
+                    
+                    @endphp
+                    @if($con->msg == "Success" && $con->order_id == $finalOrder_id)
+                    
+                      <tr>
+                        <td>সদস্য নংঃ</td>
+                        <td>{{$con->id}}</td>
+                        <td>তারিখঃ</td>
+                        <td>{{date('d-M-y', strtotime($con->created_at))}}</td>
+                      </tr>
 
-                <tr>
-                  <td>পিতা/স্বামির নামঃ</td>
-                  <td>{{$pa->g_name}}</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>ঠিকানাঃ</td>
-                  <td>{{$pa->address}}</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>থানাঃ</td>
-                  <td>{{$pa->thana}}</td>
-                  <td>জেলাঃ</td>
-                  <td>{{$pa->district->district_name}}</td>
-                </tr>
-                <tr>
-                  <td>ড্রেসের ধরনঃ</td>
-                  <td>{{$pa->dress->d_name}}</td>
-                  <td>ড্রেস সাইজঃ</td>
-                  <td>{{$pa->size->size ?? ''}}</td>
-                </tr>
-                <tr>
-                  <td>ব্লাড গ্রুপঃ</td>
-                  <td>{{$pa->blood->blood ?? ''}}</td>
-                  <td>টাকার পরিমাণঃ</td>
-                  <td>{{$pa->categories->price}}</td>
-                </tr>
-                @endif
-                @endforeach
-                @endforeach
+                      <tr>
+                        <td>নামঃ</td>
+                        <td>{{$con->name}}</td>
+                        <td>মোবাইল নাম্বারঃ</td>
+                        <td>{{$con->mobile}}</td>
+                      </tr>
+
+                      <tr>
+                        <td>পিতা/স্বামির নামঃ</td>
+                        <td>{{$pa->g_name  ?? ''}}</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>ঠিকানাঃ</td>
+                        <td>{{$pa->address  ?? ''}}</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>থানাঃ</td>
+                        <td>{{$pa->thana  ?? ''}}</td>
+                        <td>জেলাঃ</td>
+                        <td>{{$pa->district->district_name  ?? ''}}</td>
+                      </tr>
+                      <tr>
+                        <td>ড্রেসের ধরনঃ</td>
+                        <td>{{$pa->dress->d_name  ?? ''}}</td>
+                        <td>ড্রেস সাইজঃ</td>
+                        <td>{{$pa->size->size ?? ''}}</td>
+                      </tr>
+                      <tr>
+                        <td>ব্লাড গ্রুপঃ</td>
+                        <td>{{$pa->blood->blood ?? ''}}</td>
+                        <td>টাকার পরিমাণঃ</td>
+                        <td>{{$con->amount}}</td>
+                      </tr>
+                    @endif
+                  @endforeach
               </tbody>
             </table>
 
@@ -140,6 +143,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <script src="{{asset('js/form.js')}}"></script>
 </body>
 
 </html>

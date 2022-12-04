@@ -15,6 +15,7 @@ class CreateSubCommitteesTable extends Migration
     {
         Schema::create('sub_committees', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('subcom_id');
             $table->string('name');
             $table->text('designation');
             $table->text('mobile_no');
